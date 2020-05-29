@@ -6,7 +6,14 @@
     <ul>
     @foreach ($tasks as $task)
     
-            <li>{{$task->content}} {!! link_to_route("tasks.show",$task->id,["task" => $task->id] ) !!}   </li>
+            <li>
+                <p> {{$task->content}}  状態:{{$task -> status}}</p> 
+        <p>    {!! link_to_route("tasks.show","編集",["task" => $task->id] ) !!} </p>
+        
+        
+        
+        
+        </li>
     @endforeach
     </ul>
     @endif

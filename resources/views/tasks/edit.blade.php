@@ -10,6 +10,9 @@
 
 {!! Form::label("content","タスク内容")  !!}
 {!! Form::text("content",$task->content,["class" => "form-control"]) !!}
+
+{!!  Form::label("status","状態") !!}
+{!! Form::text("status",$task->status,["class" => "form-control"] ) !!}
 </div>
 
 
