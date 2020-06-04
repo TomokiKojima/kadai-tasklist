@@ -26,7 +26,9 @@
         </header>
 
         <div class="container">
-            
+            @if (Auth::check())
+                ようこそ{{ Auth::user()->name }}　さん
+            @endif
             @include("commons.error_messages")
             
             @yield('content')
