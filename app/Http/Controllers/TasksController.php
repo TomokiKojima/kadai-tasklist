@@ -119,11 +119,13 @@ class TasksController extends Controller
             "status" => "required|max:10",
             "content" => "required|max:100",
             ]);
-        
-        $task = Task::findOrFail($id);
-        $task -> content = $request -> content;
-        $task -> status = $request -> status;
-        $task -> save();
+        if(\Auth::user()->id == $task->user_id ){
+
+            $task = Task::findOrFail($id);
+            $task -> content = $request -> content;
+            $task -> status = $request -> status;
+            $task -> save();
+        }
         return redirect("/");
         
         //
@@ -138,15 +140,14 @@ class TasksController extends Controller
     public function destroy($id)
     {
         $task = Task::findOrFail($id);
-                if(\Auth::user()->id == $task->user_id ){
-        $task -> delete();
-        return redirect("/");
-                }
-                else{
-                    
-                    return redirect("/");
-                }
-                
+        if(\Auth::user()->id == $task->user_id ){
+            $task -> delete();
+            return redirect("/");
+        }
+        else{
+            return redirect("/");
+        }
+            
                 
         
         //
