@@ -15,7 +15,7 @@ Route::get('/','TasksController@index')->name("index");
 Route::resource("tasks","TasksController");
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('tasks', 'TasksController', ['only' => ["destroy","store","create","edit"]] );
+    Route::resource('tasks', 'TasksController', ['only' => ["destroy","store","create","edit","update"]] );
 });
 
 
